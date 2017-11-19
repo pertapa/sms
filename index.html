@@ -1,0 +1,73 @@
+<html xmlns="http://www.w3.org/1999/xhtml">  
+  <head>  
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />  
+    <link rel="stylesheet" href="css/style.css" media="screen">  
+    <title>Free SMS Indonesia</title>
+    <script src='https://www.google.com/recaptcha/api.js'></script>  
+
+  </head>  
+  <body>  
+    <div id="wrapper">  
+      <form action="simpan.php" method="post" name="frmsms" onsubmit="return validateForm()">  
+        <table border="0" align="center" width="100%">   <tr>
+          <caption>Free SMS Indonesia</caption>  
+          <tr>  
+            <td>No Telpon</td>  
+            <td>:</td>  
+            <td><input type="text" name="tujuan" required="required" id="numb"><p id="salah"></td>  
+          </tr>    
+          <tr>  
+            <td valign="top">Pesan</td>  
+            <td valign="top">:</td>  
+            <td><textarea id="sms"  name="pesan" onKeydown="fungsi()" required="required" cols="30" rows="15"></textarea></td>  
+          </tr>
+	 <tr>
+            <td> </td>
+            <td></td>
+            <td><p id="dowo"></p></td>
+          </tr>
+          <tr>  
+            <td> </td>
+            <td></td> 
+	    <td><div class="g-recaptcha" data-sitekey="6LcdFC0UAAAAAHHASm8dZxhFxu8ijcNFVgQUNYxs">	
+            </td>  
+          </tr>
+	  <tr>
+            <td> </td>
+            <td></td>
+            <td><input type="submit" name="proses" value="Kirim" class="button">  
+            </td>
+          </tr>
+  
+        </table>
+      </form>
+	<script> 
+		function fungsi(){
+			var panjang;
+			panjang=document.getElementById("sms").value.length
+    			document.getElementById("dowo").innerHTML = 100-panjang;
+			if (panjang > 100){
+			 	document.getElementById("dowo").style.color="red";
+			 	document.getElementById("dowo").innerHTML = "lebih dari 100 karakter";
+			 	document.getElementById("sms").readOnly=true;
+			}
+		}
+		function validateForm() {
+   			var x = document.forms["frmsms"]["tujuan"].value;
+    			var sub=x.substring(0,2);
+    			if (sub != "08") {
+         			document.getElementById("salah").innerHTML = "Nomor telpon salah";
+        			return false;
+    			}
+    
+		}
+	
+
+	</script>
+    </div>
+    <!-- Histats.com  START (hidden counter) -->
+    <a href="/" alt="" target="_blank" >
+    <img  src="//sstatic1.histats.com/0.gif?1660187&101" alt="" border="0">
+    <!-- Histats.com  END  -->  
+  </body>  
+ </html>  
